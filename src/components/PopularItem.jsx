@@ -7,23 +7,36 @@ import { Splide,SplideTrack,SplideSlide } from "@splidejs/react-splide";
 import '@splidejs/react-splide/css';
 
 //usestate is used to save the data
-function Popular() {  
-  const [popular, setPopular] = useState([]);
+function PopularItem() {  
+  const [popularItem, setPopularItem] = useState([]);
   //to get the getPopular function run soon as component is rendered, we use (use Effect)
    useEffect(() =>{
-       getPopular();
+       getPopularItem();
    },[]); //empty array tells us that run only when component is rendered
    
   
   //fetching the random receipes from spoonacular API.
   //async is used here beacause we need to wait for the data and we have to make sure that we have data beforing trying to fetch
-  const getPopular = async ()=> {  
-    const api = await fetch(
-      `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=9`
-      ); //number indicates how many receipe we want to fetch
-    const data = await api.json(); //providing a json format
-    setPopular(data.recipes);
-    console.log(data.recipes);
+  const getPopularItem = async ()=> {  
+    //here we want to check if there is anything in the local storage
+    //checks if there is anything in local storage or not
+    const check = localStorage.getItem('popularItem');
+    //if item is present, set it
+    if(check)
+    {
+      setPopularItem(JSON.parse(check)); //parse takes the data(which is in string) and parse it into array
+    }
+    //if not then we will fetch the data
+    else{
+      const api = await fetch(
+        `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=9`
+        ); //number indicates how many receipe we want to fetch
+      const data = await api.json(); //providing a json format
+      localStorage.setItem("popular", JSON.stringify(data.recipes));//stringify takes array and converts it into string and pushes the data
+      setPopularItem(data.recipes);
+      console.log(data.recipes);
+    }
+    
   };
 
   return(
@@ -32,14 +45,14 @@ function Popular() {
           <h3>Popular Picks</h3>
           <Splide
              options={{
-               perPage: 4,
+               perPage: 2,
                //arrows: false,
                pagination: false,
                drag: 'free',
                gap: "3rem",
             }} 
           >
-           {popular.map((recipe) => //loop through all the recipe on the api
+           {popularItem.map((recipe) => //loop through all the recipe on the api
            {
              return(
               <SplideSlide key={recipe.id}>
@@ -106,5 +119,4 @@ const Gradient = styled.div`{
 }
    
 `;
-
-export default Popular;
+export default PopularItem;
