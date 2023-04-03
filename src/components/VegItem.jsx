@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { Splide,SplideTrack,SplideSlide } from "@splidejs/react-splide";
 //import "@splidejs/splide/dist/css/splide.min.css";
 import '@splidejs/react-splide/css';
+import { Link } from 'react-router-dom';
 
 function VegItem () {
   const [vegItem, setVegItem] = useState([]);
@@ -54,9 +55,11 @@ function VegItem () {
          return(
           <SplideSlide key={recipe.id}>
           <Card>
+            <Link to= {'/recipe/' + recipe.id}>
               <p>{recipe.title}</p>
               <img src={recipe.image} alt={recipe.title} />
               <Gradient />
+            </Link>  
           </Card>
           </SplideSlide>
          );

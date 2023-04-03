@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { Splide,SplideTrack,SplideSlide } from "@splidejs/react-splide";
 //import "@splidejs/splide/dist/css/splide.min.css";
 import '@splidejs/react-splide/css';
+import { Link } from "react-router-dom";
 
 //usestate is used to save the data
 function PopularItem() {  
@@ -28,7 +29,7 @@ function PopularItem() {
     }
     //if not then we will fetch the data
     else{
-      const api = await fetch(
+      const api = await fetch( 
         `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=9`
         ); //number indicates how many receipe we want to fetch
       const data = await api.json(); //providing a json format
@@ -45,7 +46,7 @@ function PopularItem() {
           <h3>Popular Picks</h3>
           <Splide
              options={{
-               perPage: 2,
+               perPage: 4,
                //arrows: false,
                pagination: false,
                drag: 'free',
@@ -57,12 +58,14 @@ function PopularItem() {
              return(
               <SplideSlide key={recipe.id}>
               <Card>
+              <Link to= {'/recipe/' + recipe.id}>
                   <p>{recipe.title}</p>
                   <img src={recipe.image} alt={recipe.title} />
                   <Gradient />
+                </Link>
               </Card>
               </SplideSlide>
-             );
+             ); 
            })}
            </Splide>
         </Wrapper>
