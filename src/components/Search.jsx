@@ -27,7 +27,7 @@ function Search() {
 }
 
 const FormStyle = styled.form`
-    margin: 0rem 20rem;
+    margin: 0rem 15rem;
     div{
       position: relative;
       width: 100%;
@@ -47,8 +47,8 @@ const FormStyle = styled.form`
     svg{
       position: absolute;
       top: 50%;
-      left: 5%;
-      transform: translate(100);
+      left: 0%;
+      transform: translate(100%, -50%);
       color: white;
     }
 `

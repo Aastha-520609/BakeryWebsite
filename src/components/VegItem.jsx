@@ -47,7 +47,7 @@ function VegItem () {
            //arrows: false,
            pagination: false,
            drag: 'free',
-           gap: "3rem",
+           gap: "2rem",
         }} 
       >
        {vegItem.map((recipe) => //loop through all the recipe on the api
@@ -77,7 +77,7 @@ margin: 4rem 0rem;
 
 const Card = styled.div`
 
-min-height: 15rem;
+min-height: 20rem;
 border-radius: 2rem;
 overflow: hidden;
 position: relative;
@@ -111,7 +111,7 @@ align-items: center;
 `;
 const Gradient = styled.div`{
 z-index: 3;
-position: absoulte;
+position: absolute;
 width: 100%;
 height: 100%;
 background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.5));

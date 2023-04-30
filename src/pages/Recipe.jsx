@@ -21,7 +21,7 @@ function Recipe() {
 
     useEffect(() => {
        fetchDetails();  
-    }, [params.name]);
+    }, [params.name]);  
 
   return (
    <DetailWrapper>
@@ -40,7 +40,7 @@ function Recipe() {
         {activeTab === "instructions" && (
           <div> 
             <h3 dangerouslySetInnerHTML={{ __html: details.summary}}></h3>
-            <h3 dangerouslySetInnerHTML={{ __html: details.instructions}}></h3>
+            <h5 dangerouslySetInnerHTML={{ __html: details.instructions}}></h5>
           </div>
         )}
 
@@ -57,7 +57,7 @@ function Recipe() {
 }
 
 const DetailWrapper = styled.div`
-  margin-top: 10rem;
+  margin-top: 1rem;
   margin-bottom: 5rem;
   display: flex;
   .active{
@@ -68,26 +68,31 @@ const DetailWrapper = styled.div`
     margin-bottom: 2rem;
   }
   li{
-    font-size: 0.5rem;
-    line-height: 2.5rem;
+    font-size: 1.2rem;
+    line-height: 2rem;
   }
   ul{
     margin-top: 2rem;
   }
+  h5{
+    font-size: 1rem;
+    line-height : 1.5rem;
+  }
 `;
 
 const Button = styled.button`
-  padding: 1rem 2rem;
+  padding: 10px;
   color: black;
   background: white;
   border: 2px solid black;
-  margin-right: 2rem;
   font-weight: 600;
+  margin-right: 10px;
 
 `;
 
 const Info = styled.div`
-   margin-left: 10rem;
+   margin-left: 5rem;
+   font-size: 2px;
 `;
 
 export default Recipe

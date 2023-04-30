@@ -3,7 +3,7 @@
 import { useEffect, useState} from "react";
 import styled from "styled-components";
 import { Splide,SplideTrack,SplideSlide } from "@splidejs/react-splide";
-//import "@splidejs/splide/dist/css/splide.min.css";
+import "@splidejs/splide/dist/css/splide.min.css";
 import '@splidejs/react-splide/css';
 import { Link } from "react-router-dom";
 
@@ -47,10 +47,8 @@ function PopularItem() {
           <Splide
              options={{
                perPage: 4,
-               //arrows: false,
                pagination: false,
-               drag: 'free',
-               gap: "3rem",
+               gap: '2rem',
             }} 
           >
            {popularItem.map((recipe) => //loop through all the recipe on the api
@@ -62,7 +60,7 @@ function PopularItem() {
                   <p>{recipe.title}</p>
                   <img src={recipe.image} alt={recipe.title} />
                   <Gradient />
-                </Link>
+              </Link>
               </Card>
               </SplideSlide>
              ); 
@@ -80,7 +78,7 @@ const Wrapper = styled.div`
 
 const Card = styled.div`
 
-  min-height: 15rem;
+  min-height: 18rem;
   border-radius: 2rem;
   overflow: hidden;
   position: relative;
@@ -109,17 +107,15 @@ const Card = styled.div`
     display: flex;
     justify-context: center;
     align-items: center;
-    
+  
   }
 `;
 const Gradient = styled.div`{
   z-index: 3;
-  position: absoulte;
+  position: absolute;
   width: 100%;
   height: 100%;
   background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.5));
-
-}
-   
+} 
 `;
 export default PopularItem;
