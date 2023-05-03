@@ -12,7 +12,7 @@ function Category() {
       <Slink to={"/Cuisine/Italian"}> 
         <FaPizzaSlice />
         <h4>Italian</h4>
-      </Slink>
+      </Slink> 
 
       <Slink to={"/Cuisine/American"}>
         <FaHamburger />
@@ -24,9 +24,9 @@ function Category() {
         <h4>Thai</h4>
       </Slink>
 
-      <Slink to={"/Cuisine/Japnese"}>
+      <Slink to={"/Cuisine/Japanese"}>
         <GiChopsticks />
-        <h4>Japnese</h4>
+        <h4>Japanese</h4>
       </Slink>
 
     </List>

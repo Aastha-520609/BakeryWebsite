@@ -2,7 +2,7 @@
 
 import { useEffect, useState} from "react";
 import styled from "styled-components";
-import { Splide,SplideTrack,SplideSlide } from "@splidejs/react-splide";
+import { Splide,SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/splide/dist/css/splide.min.css";
 import '@splidejs/react-splide/css';
 import { Link } from "react-router-dom";
@@ -51,8 +51,7 @@ function PopularItem() {
                gap: '2rem',
             }} 
           >
-           {popularItem.map((recipe) => //loop through all the recipe on the api
-           {
+            {popularItem.map((recipe) => { //loop through all the recipe on the api{
              return(
               <SplideSlide key={recipe.id}>
               <Card>
